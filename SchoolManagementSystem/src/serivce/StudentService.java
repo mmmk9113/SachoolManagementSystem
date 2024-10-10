@@ -30,4 +30,28 @@ public class StudentService {
             System.out.println("There is problem with connecting to database.");
         }
     }
+
+    public StudentService() {
+        studentRepository = new StudentRepository();
+    }
+
+    public void addStudent(Student student) {
+        studentRepository.createStudent(student);
+    }
+
+    public Student getStudent(int studentId, String nationalCode) {
+        return studentRepository.findById(studentId, nationalCode);
+    }
+
+    public void updateStudent(Student student) {
+        studentRepository.updateStudent(student);
+    }
+
+    public void deleteStudent(int studentId, String nationalCode) {
+        studentRepository.dedeleteStudent(studentId, nationalCode);
+    }
+
+    public List<Student> listAllStudents() {
+        return studentRepository.findAll();
+    }
 }

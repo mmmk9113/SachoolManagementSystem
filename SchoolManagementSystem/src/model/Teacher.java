@@ -1,33 +1,33 @@
 package model;
 
-import java.sql.Date;
+import java.util.Date;
 
-public class Student {
-    private long studentId;
+public class Teacher {
+    private int teacherId;
     private String firstName;
     private String lastName;
     private Date dob;
     private String nationalCode;
-    private double gpu;
+    private int courseId;
 
-    public Student(long studentId, String firstName, String lastName, Date dob, String nationalCode, double gpu) {
-        this.studentId = studentId;
+    public Teacher(int teacherId, String firstName, String lastName, Date dob, String nationalCode, int courseId) {
+        this.teacherId = teacherId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
         this.nationalCode = nationalCode;
-        this.gpu = gpu;
+        this.courseId = courseId;
     }
 
-    public Student() {
+    public Teacher() {
     }
 
-    public int getStudentId() {
-        return (int) studentId;
+    public int getTeacherId() {
+        return teacherId;
     }
 
-    public void setStudentId(long studentId) {
-        this.studentId = studentId;
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
     }
 
     public String getFirstName() {
@@ -62,24 +62,23 @@ public class Student {
         this.nationalCode = nationalCode;
     }
 
-    public float getGpu() {
-        return (float) gpu;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setGpu(double gpu) {
-        this.gpu = gpu;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
-
 
     @Override
     public String toString() {
-        return "Student{" +
-                "studentId=" + studentId +
+        return "Teacher{" +
+                "teacherId=" + teacherId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", dob=" + dob +
                 ", nationalCode='" + nationalCode + '\'' +
-                ", gpu=" + gpu +
+                ", courseId=" + courseId +
                 '}';
     }
 }
