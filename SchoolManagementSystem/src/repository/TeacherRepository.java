@@ -26,28 +26,28 @@ public class TeacherRepository {
         }
     }
 
-    public Teacher readTeacher(int teacherId, String nationalCode) {
-        String sql = "SELECT * FROM teachers WHERE teachers_id = ? AND national_code = ?";
-        try (Connection conn = database.getDatabaseConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, teacherId);
-            pstmt.setString(2, nationalCode);
-            ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) {
-                Teacher teacher = new Teacher();
-                teacher.setTeacherId(rs.getInt("teachers_id"));
-                teacher.setFirstName(rs.getString("first_name"));
-                teacher.setLastName(rs.getString("last_name"));
-                teacher.setDob(rs.getDate("dob"));
-                teacher.setNationalCode(rs.getString("national_code"));
-                teacher.setCourseId(rs.getInt("course_id"));
-                return teacher;
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Error reading teacher", e);
-        }
-        return null;
-    }
+//    public Teacher readTeacher(int teacherId, String nationalCode) {
+//        String sql = "SELECT * FROM teachers WHERE teachers_id = ? AND national_code = ?";
+//        try (Connection conn = database.getDatabaseConnection();
+//             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+//            pstmt.setInt(1, teacherId);
+//            pstmt.setString(2, nationalCode);
+//            ResultSet rs = pstmt.executeQuery();
+//            if (rs.next()) {
+//                Teacher teacher = new Teacher();
+//                teacher.setTeacherId(rs.getInt("teachers_id"));
+//                teacher.setFirstName(rs.getString("first_name"));
+//                teacher.setLastName(rs.getString("last_name"));
+//                teacher.setDob(rs.getDate("dob"));
+//                teacher.setNationalCode(rs.getString("national_code"));
+//                teacher.setCourseId(rs.getInt("course_id"));
+//                return teacher;
+//            }
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error reading teacher", e);
+//        }
+//        return null;
+//    }
 
     public void updateTeacher(Teacher teacher) {
         String sql = "UPDATE teachers SET first_name = ?, last_name = ?, dob = ?, course_id = ? WHERE teachers_id = ? AND national_code = ?";

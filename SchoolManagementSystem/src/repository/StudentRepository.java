@@ -66,7 +66,7 @@ public class StudentRepository {
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, student.getFirstName());
             pstmt.setString(2, student.getLastName());
-            pstmt.setDate(3, new java.sql.Date(student.getDob().getTime()));
+            pstmt.setDate(3, new Date(student.getDob().getTime()));
             pstmt.setFloat(4, student.getGpu());
             pstmt.setInt(5, student.getStudentId());
             pstmt.setString(6, student.getNationalCode());

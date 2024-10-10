@@ -3,12 +3,12 @@ package util;
 import model.Course;
 import model.Student;
 import model.Teacher;
-import repository.StudentRepository;
+
 import serivce.CourseService;
 import serivce.StudentService;
 import serivce.TeacherService;
 
-import java.sql.SQLException;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -89,7 +89,9 @@ public class Menu {
         String nationalCode = scanner.next();
         System.out.println("Enter GPA:");
         float gpu = scanner.nextFloat();
+
         Student student = new Student();
+
         student.setFirstName(firstName);
         student.setLastName(lastName);
         student.setDob((java.sql.Date) dob);
@@ -117,6 +119,7 @@ public class Menu {
         int id = scanner.nextInt();
         System.out.println("Enter national code:");
         String code = scanner.next();
+
         Student student = studentService.getStudent(id, code);
         if (student != null) {
             System.out.println("Enter new first name:");
@@ -128,9 +131,10 @@ public class Menu {
             Date dob = java.sql.Date.valueOf(dobStr);
             System.out.println("Enter new GPA:");
             float gpu = scanner.nextFloat();
+
             student.setFirstName(firstName);
             student.setLastName(lastName);
-//            student.setDob(dob);
+            student.setDob((java.sql.Date) dob);
             student.setGpu(gpu);
             studentService.updateStudent(student);
             System.out.println("Student updated successfully!");
@@ -144,6 +148,7 @@ public class Menu {
         int id = scanner.nextInt();
         System.out.println("Enter national code:");
         String code = scanner.next();
+
         studentService.deleteStudent(id, code);
         System.out.println("Student deleted successfully!");
     }
